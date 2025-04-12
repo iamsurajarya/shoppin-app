@@ -120,3 +120,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@theme {
+  --shadow-md: 0px 2px 8px 0px rgba(60, 64, 67, 0.25);
+}
+
+/* Custom css below */
