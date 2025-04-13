@@ -103,7 +103,7 @@ const SearchBar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 bg-white z-50 px-2 md:px-4 py-6 z-50"
+            className="fixed inset-0 bg-white z-50 px-2 md:px-4 py-6"
           >
             {/* Animated Search Bar */}
             <motion.div
