@@ -183,3 +183,57 @@
     transform: translateY(0px);
   }
 }
+
+/* Custom Canera css  */
+
+/* styles/CameraStyles.css */
+
+.camera-preview {
+  width: 100%;
+  height: calc(100% - 80px);
+  position: relative;
+  overflow: hidden;
+}
+
+.focus-border {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  animation: pulse 1.5s infinite;
+}
+
+.controls {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.gallery-button,
+.lens-button {
+  font-size: 24px;
+  padding: 15px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

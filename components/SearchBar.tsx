@@ -10,11 +10,29 @@ import camLight from "@/public/assets/icons/lightIcons/cameraLight.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import leftArrowLight from "@/public/assets/icons/lightIcons/leftArrowLight.svg";
 import VoiceSearchModal from "./VoiceSearchModal";
+import { openCameraOrGallery } from "@/utils";
+import CameraPickerModal from "./CameraPickerModal";
+import CameraInterface from "./CameraInterface";
 
 const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  // Camera picker
+  const [showPicker, setShowPicker] = useState(false);
+  const [imageBase64, setImageBase64] = useState<string | null>(null);
+
+  const handlePhoto = (photoUrl: string) => {
+    // Handle the captured or selected photo
+    console.log("Received photo:", photoUrl);
+  };
+
+  const handlePick = async (type: "camera" | "gallery") => {
+    setShowPicker(false);
+    const base64 = await openCameraOrGallery(type);
+    setImageBase64(base64 ?? null); // This line fixes the error
+  };
 
   const [showModal, setShowModal] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
@@ -145,14 +163,32 @@ const SearchBar = () => {
                   </div>
 
                   <div className="flex gap-3 ml-2">
-                    <Image
-                      onClick={() => setShowModal(true)}
-                      src={micLight}
-                      alt="mic"
+                    <div>
+                      <Image
+                        onClick={() => setShowModal(true)}
+                        src={micLight}
+                        alt="mic"
+                        height={24}
+                        width={24}
+                      />
+                    </div>
+                    {/* <Image
+                      onClick={() => setShowPicker(true)}
+                      src={camLight}
+                      alt="cam"
                       height={24}
                       width={24}
-                    />
-                    <Image src={camLight} alt="cam" height={24} width={24} />
+                    /> */}
+
+                    <CameraInterface onPhotoTaken={handlePhoto} />
+
+                    {imageBase64 && (
+                      <Image
+                        src={`data:image/jpeg;base64,${imageBase64}`}
+                        alt="Preview"
+                        className="mt-4 rounded-md"
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -175,6 +211,12 @@ const SearchBar = () => {
         isOpen={showModal}
         onClose={() => setShowModal(false)}
         onResult={(text) => setSearchValue(text)}
+      />
+
+      <CameraPickerModal
+        isOpen={showPicker}
+        onClose={() => setShowPicker(false)}
+        onPick={handlePick}
       />
     </div>
   );
