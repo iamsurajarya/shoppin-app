@@ -128,7 +128,7 @@
 /* Custom css below */
 
 /* Loader classes */
-.canvas {
+#google-dots {
   position: relative;
   display: block;
   margin: auto;
@@ -138,34 +138,34 @@
   background: none;
 }
 
-.dot {
+#google-dots .dot {
   position: absolute;
   height: 15px;
   width: 15px;
   border-radius: 50%;
-  top: 42px; /* vertically centered */
+  top: 42px;
   animation: listening 1.2s ease-in-out infinite;
 }
 
-.blue {
+#google-dots .blue {
   background-color: #1e88e5;
   left: 10px;
   animation-delay: 0s;
 }
 
-.red {
+#google-dots .red {
   background-color: #e53935;
   left: 40px;
   animation-delay: 0.1s;
 }
 
-.yellow {
+#google-dots .yellow {
   background-color: #ffb300;
   left: 70px;
   animation-delay: 0.2s;
 }
 
-.green {
+#google-dots .green {
   background-color: #4caf50;
   left: 100px;
   animation-delay: 0.3s;
