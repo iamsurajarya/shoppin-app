@@ -23,10 +23,16 @@ const GoogleHomePage = () => {
 
       {/* Buttons */}
       <div className="mt-8 flex gap-4">
-        <button className="bg-gray-100 px-4 py-2 text-sm rounded hover:shadow">
+        <Button
+          variant="secondary"
+          className="bg-gray-100 px-4 py-2 text-sm rounded hover:shadow hover:border"
+        >
           Google Search
-        </button>
-        <Button className="bg-gray-100 px-4 py-2 text-sm rounded hover:shadow">
+        </Button>
+        <Button
+          variant="secondary"
+          className="bg-gray-100 px-4 py-2 text-sm rounded hover:shadow hover:border"
+        >
           I&apos;mFeeling Lucky
         </Button>
       </div>

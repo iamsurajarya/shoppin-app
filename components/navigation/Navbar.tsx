@@ -24,7 +24,11 @@ const Navbar = () => {
   const platform = Capacitor.getPlatform();
 
   return (
-    <section className="w-screen flex p-1.5 items-center px-[22px] justify-between">
+    <section
+      className={`w-screen flex p-1.5 items-center px-[22px] justify-between ${
+        ["android", "ios"].includes(platform) && "mt-20"
+      } `}
+    >
       {["android", "ios"].includes(platform) ? (
         <div className="hover:bg-[rgba(68,71,70,0.08)]  rounded-full p-2  hover:shadow-sm h-10 w-10">
           <Image src={jarLight} alt="labIcon" height={24} width={24} />
